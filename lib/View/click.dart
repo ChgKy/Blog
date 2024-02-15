@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'edit.dart';
 
 class BlogDetailsPage extends StatefulWidget {
   int? id = 0;
@@ -97,7 +98,10 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Handle Edit button pressed
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Edit_WriteBlogPage(id: Blog_detail[0]['blog_id'])),
+                      );
                     },
                     child: Text('Edit'),
                   ),
