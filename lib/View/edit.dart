@@ -44,10 +44,6 @@ class _WriteBlogPageState extends State<Edit_WriteBlogPage> {
     print(value_2["status"]);
   }
 
-  void delete(){
-
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +84,24 @@ class _WriteBlogPageState extends State<Edit_WriteBlogPage> {
                 onPressed: () {
                   setState(() {
                     updateblog(title.text, firstname.text, about.text);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Saved'),
+                          content: Text('Your Informatoion have been save!'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                Navigator.pop(context);
+                              },
+                              child: Text('Close'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   });
                 },
                 child: const Text(

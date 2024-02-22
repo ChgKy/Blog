@@ -5,6 +5,7 @@ import 'edit.dart';
 
 class BlogDetailsPage extends StatefulWidget {
   int? id = 0;
+
   BlogDetailsPage({Key? key, required this.id}) : super(key: key);
 
   @override
@@ -20,8 +21,18 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
     getdata();
   }
 
+  void delete(id) async {
+    var response_3 = await http.delete(
+      Uri.parse("http://10.0.2.2:8000/api/delete/" + id.toString()),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+  }
+
   void getdata() async {
-    final response = await http.get(Uri.parse("http://10.0.2.2:8000/api/blogdetail/" + widget.id.toString()));
+    final response = await http.get(Uri.parse(
+        "http://10.0.2.2:8000/api/blogdetail/" + widget.id.toString()));
     final value = jsonDecode(response.body);
     setState(() {
       Blog_detail = value['blog'];
@@ -48,10 +59,10 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (Blog_detail.isNotEmpty)
-            Text(
-              Blog_detail[0]['title'],
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+              Text(
+                Blog_detail[0]['title'],
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             SizedBox(height: 20),
             Expanded(
               child: Padding(
@@ -83,8 +94,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child:
-                  Text(
+                  child: Text(
                     Blog_detail[0]['name'],
                     style: TextStyle(fontSize: 16),
                   ),
@@ -100,14 +110,34 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Edit_WriteBlogPage(id: Blog_detail[0]['blog_id'])),
+                        MaterialPageRoute(
+                            builder: (context) => Edit_WriteBlogPage(
+                                id: Blog_detail[0]['blog_id'])),
                       );
                     },
                     child: Text('Edit'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle Delete button pressed
+                      delete(Blog_detail[0]['blog_id']);
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Saved'),
+                            content: Text('Your Informatoion have been save!'),
+                            actions: <Widget>[
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.pop(context);
+                                },
+                                child: Text('Close'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     child: Text('Delete'),
                     style: ElevatedButton.styleFrom(primary: Colors.red),

@@ -9,6 +9,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isPasswordVisible = false;
+  TextEditingController Username = TextEditingController();
+  TextEditingController Password = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +21,12 @@ class _LoginPageState extends State<LoginPage> {
           title: const Text(
             'Login',
             style: TextStyle(
-              color: Colors.white, // Set text color to white
+              color: Colors.yellow, // Set text color to white
               fontSize: 24, // Set font size
               fontWeight: FontWeight.bold, // Set font weight
             ),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.green,
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -32,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
             // Align text to the left
             children: [
               SizedBox(height: 150),
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(
                   fontSize: 24,
@@ -48,7 +51,8 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.grey[200],
                 ),
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: Username,
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.person),
                     labelText: 'Username or Email',
                     border: InputBorder.none,
@@ -66,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.grey[200],
                 ),
                 child: TextField(
+                  controller: Password,
                   obscureText: !_isPasswordVisible,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
@@ -100,6 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                         MaterialStateProperty.all<Color>(Colors.black),
                   ),
                   onPressed: () {
+                    if(Username.text.isNotEmpty && Password.text.isNotEmpty)
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),
