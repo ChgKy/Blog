@@ -22,8 +22,9 @@ class MyOpeningScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome to The Blog'),
-        backgroundColor: Colors.black,
+        title:
+            Text('Welcome to The Blog', style: TextStyle(color: Colors.yellow)),
+        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Column(
@@ -50,7 +51,8 @@ class MyOpeningScreen extends StatelessWidget {
               height: 40,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.green),
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -58,33 +60,34 @@ class MyOpeningScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
-                child: Text(
-                  'Log In',
-                  style: TextStyle(color: Colors.white),
+                child: const Text(
+                  'Continue',
+                  style: TextStyle(color: Colors.yellow),
                 ),
               ),
             ),
-            SizedBox(height:10),
+            SizedBox(height: 10),
             // Create Account Button
-            SizedBox(
-              width: 250,
-              height: 40,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignUpPage()),
-                  );
-                },
-                child: Text(
-                  'Create Account',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ),
+            // SizedBox(
+            //   width: 250,
+            //   height: 40,
+            //   child: ElevatedButton(
+            //     style: ButtonStyle(
+            //       backgroundColor:
+            //           MaterialStateProperty.all<Color>(Colors.white),
+            //     ),
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => SignUpPage()),
+            //       );
+            //     },
+            //     child: Text(
+            //       'Create Account',
+            //       style: TextStyle(color: Colors.black),
+            //     ),
+            //   ),
+            // ),
             SizedBox(),
           ],
         ),

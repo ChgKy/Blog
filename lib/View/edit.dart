@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'click.dart';
 
 class Edit_WriteBlogPage extends StatefulWidget {
   int? id = 0;
@@ -94,7 +95,10 @@ class _WriteBlogPageState extends State<Edit_WriteBlogPage> {
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
-                                Navigator.pop(context);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => BlogDetailsPage(id: widget.id)),
+                                );
                               },
                               child: Text('Close'),
                             ),

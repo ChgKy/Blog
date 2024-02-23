@@ -43,6 +43,7 @@ class _MyHomePageState extends State<listview> {
       body: Center(
         child: Column(
           children: [
+            if(Blog.isNotEmpty)
             Expanded(
               child: ListView.builder(
                 itemCount: Blog.length,

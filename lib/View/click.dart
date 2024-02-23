@@ -108,6 +108,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -124,8 +125,8 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Saved'),
-                            content: Text('Your Informatoion have been save!'),
+                            title: Text('Deleted'),
+                            content: Text('You blog have been sccessfully deleted'),
                             actions: <Widget>[
                               ElevatedButton(
                                 onPressed: () {
