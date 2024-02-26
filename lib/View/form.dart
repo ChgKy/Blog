@@ -70,7 +70,7 @@ class _WriteBlogPageState extends State<WriteBlogPage> {
               height: 40,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                 ),
                 onPressed: () {
                   setState(() {
@@ -130,7 +130,7 @@ class _WriteBlogPageState extends State<WriteBlogPage> {
                 },
                 child: Text(
                   'Submit',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.yellow),
                 ),
               ),
             ),

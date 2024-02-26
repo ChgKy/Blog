@@ -57,11 +57,11 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.edit),
-            label: 'Edit',
+            label: 'Post',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.inbox),
-            label: 'Notifications',
+            label: 'Blog',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
